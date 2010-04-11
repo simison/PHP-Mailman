@@ -18,39 +18,39 @@ to get some feedback from this class. Use at your own risk, though.
 
 ## Howto
 
-* Construct
+Construct:
 
 `require_once('php_mailman.php');`
 
 `$mailman = new php_mailman('domain.com', 'password', 'listname_domain.com');`
 
 
-# Subscribe
+Subscribe:
 
 `$mailman->subscribe('email@address.com');`
 
 
-# Unsubscribe
+Unsubscribe:
 
 `$mailman->unsubscribe('email@address.com');`
 
 
-# Subscribe
+Set digest:
 
 `$mailman->digest('email@address.com');`
 
 
-# Subscribe
+List member:
 
 `$mailman->list_member('email@address.com');`
 
 
-# Subscribe
+List lists:
 
 `$mailman->list_lists();`
 
 
-# Re-set settings
+Re-set settings:
 
 `$mailman->set_domain('domain.com');`
 
