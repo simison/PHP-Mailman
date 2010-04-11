@@ -24,14 +24,14 @@ class php_mailman
 	 * It's best to set these when construction the class
 	 */
 	
-	public $domain = 		'';				// Default listname
-	public $adminpasswd = 	'';				// Default list admin password
-	public $listname = 		'';				// Domain of your server
-	public $protocol = 		'http';		 	// Protocol of your server (http | https | ...)
-	public $listlanguage = 	'en';			// Default list language
-	public $notifyowner = 	'0';			// Send notifications to list owner on (un)subscribe, 0 = no | 1 = yes
-	public $notifyuser = 	'0';			// Send notifications to user on (un)subscribe, 0 = no | 1 = yes
-	public $digest = 		'0'; 			// Digest status, 0 = no | 1 = yes
+	public $domain =        '';          // Default listname
+	public $adminpasswd =   '';          // Default list admin password
+	public $listname =      '';          // Domain of your server
+	public $protocol =      'http';      // Protocol of your server (http | https | ...)
+	public $listlanguage =  'en';        // Default list language
+	public $notifyowner =   '0';         // Send notifications to list owner on (un)subscribe, 0 = no | 1 = yes
+	public $notifyuser =    '0';         // Send notifications to user on (un)subscribe, 0 = no | 1 = yes
+	public $digest =        '0';         // Digest status, 0 = no | 1 = yes
 	
 	// SETTINGS END
 	
@@ -41,7 +41,7 @@ class php_mailman
 	
 	
 	// Subscribe: 
-    const URL_SUBSCRIBE  = 		'<protocol>://<domain>/mailman/admin/<listname>/members/add?subscribe_or_invite=0&send_welcome_msg_to_this_batch=<notify-user>&notification_to_list_owner=<notify-owner>&subscribees_upload=<email-address>&adminpw=<adminpassword>';
+	const URL_SUBSCRIBE  = 		'<protocol>://<domain>/mailman/admin/<listname>/members/add?subscribe_or_invite=0&send_welcome_msg_to_this_batch=<notify-user>&notification_to_list_owner=<notify-owner>&subscribees_upload=<email-address>&adminpw=<adminpassword>';
 
 	// Unsubscribe: 
 	const URL_UNSUBSCRIBE  = 	'<protocol>://<domain>/mailman/admin/<listname>/members/remove?send_unsub_ack_to_this_batch=<notify-user>&send_unsub_notifications_to_list_owner=<notify-owner>&unsubscribees_upload=<email-address>&adminpw=<adminpassword>';
@@ -204,6 +204,7 @@ class php_mailman
 	 */
 	private function prepare_url($url='', $email='') {
 	
+		// Tags
 		$tags = array(
 			'<protocol>', 
 			'<domain>',
@@ -216,6 +217,7 @@ class php_mailman
 			'<digest>'
 		);
 
+		// Tags replaced with variables:
 		$replacements = array(
 			$this->protocol, 
 			$this->domain, 
