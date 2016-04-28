@@ -2,7 +2,7 @@
 /**
  * @package    php_mailman
  * @author     Mikael Korpela <mikael@ihminen.org>
- * @copyright  Copyright (c) 2010 {@link http://www.ihminen.org Mikael Korpela}
+ * @copyright  Copyright (c) 2010 {@link http://www.mikaelkorpela.fi Mikael Korpela}
  * @license    http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License
  *
  * This is just a basic skeleton to send some most used commands to Mailman.
