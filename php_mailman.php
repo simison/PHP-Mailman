@@ -55,6 +55,8 @@ class php_mailman
 	// List lists: 
 	const URL_LIST_LISTS  = 	'<protocol>://<domain>/mailman/admin/';
 	
+	// List a check a/z:
+	const URL_LIST_A_MEMBER_CHUCK  = 	'<protocol>://<domain>/mailman/admin/<listname>/members?letter=<email-address>&chunk=<chunk>&setmemberopts_btn&adminpw=<adminpassword>';
 
 
 	/**
@@ -197,12 +199,19 @@ class php_mailman
 	public function list_lists() {
 		return $this->api(self::URL_LIST_LISTS);
 	}
-
+	
+	/**
+	 * chuck list a/z
+	 */
+	public function list_chuck($email='' , $chunk='') {
+		if($email!='') return $this->api( $this->prepare_url(self::URL_LIST_A_MEMBER_CHUCK, $email , $chunk) );
+		else return false;
+	}
 
 	/**
 	 * Prepare URL for the API
 	 */
-	private function prepare_url($url='', $email='') {
+	private function prepare_url($url='', $email='',$chuck='') {
 	
 		// Tags
 		$tags = array(
@@ -210,7 +219,8 @@ class php_mailman
 			'<domain>',
 			'<listname>', 
 			'<adminpassword>', 
-			'<email-address>', 
+			'<email-address>',
+			'<chunk>',
 			'<notify-owner>',
 			'<notify-user>',
 			'<list-language>',
@@ -224,6 +234,7 @@ class php_mailman
 			$this->listname, 
 			$this->adminpasswd, 
 			$email, 
+			$chuck,
 			$this->notifyowner, 
 			$this->notifyuser, 
 			$this->listlanguage,
