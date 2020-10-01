@@ -14,6 +14,7 @@ to get some feedback from this class. Use at your own risk, though.
 * Set digest
 * List a member
 * List lists
+* List Chuck
  
 
 ## Howto
@@ -43,6 +44,10 @@ Set digest:
 List member:
 
 `$mailman->list_member('email@address.com');`
+
+List chuck:
+
+`$mailman->list_member('email@address.com','a/z');`
 
 
 List lists:
